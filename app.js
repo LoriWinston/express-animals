@@ -13,13 +13,14 @@ app.get('/animals', (req, res) => {
   
 });
 
-// app.get('/animals/:id', (req, res) => {
-//   res.json({ results: animals });
-// });
+app.get('/animals/:id', (req, res) => {
+  const id = Number(req.params.id);
 
-// const id = req.params.id;
+const selectedAnimals = animals.find((animal) => animal.id === id);
+  res.json({ results: selectedAnimals });
+});
 
-// const selectedAnimals = animals.find((animal) => animal.id === id);
+
 
 
 module.exports = {
