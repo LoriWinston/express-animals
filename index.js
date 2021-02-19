@@ -1,31 +1,14 @@
-const express = require('express')
-const app = express()
-const cors = require('cors');
-const port = process.env.PORT || 3000;
+const { app } = require('./app.js');
 
-const { animals } = require('./data.js');
+// we will define our port for local development
+const port = 3000;
 
-app.use(cors())
-
-
-
-app.get('/animals', (req, res) => {
-  res.json({ results: animals });
-});
-
-app.get('/animals/:id', (req, res) => {
-  res.json({ results: animals });
-});
-
-const id = req.params.id;
-
-const selectedAnimals = animals.find((animal) => animal.id === id);
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-});
-console.log('hello');
-
-module.exports = {
-  app 
-};
+// this is the code to 'launch/spin-up' our server.
+app.listen(
+    // the first argument is the port we want the server on
+    port, 
+    // the second argument is a callback. we just use it to log something out.
+    () => {
+        console.log(`Okay, it's running now! And your proof is that you can see this in the terminal. Example app listening at http://localhost:${port}`);
+    }
+);
